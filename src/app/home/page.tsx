@@ -5,7 +5,7 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import BestSelling from "./components/BestSelling";
 import BannerImage from "./components/BannerImage";
 
-// import Brands from "./components/Brands";
+import Brands from "./components/Brands";
 import Banner from "./components/Banner";
 import ProductTabs from "./components/ProductTabs";
 import ReadMore from "./components/ReadMore";
@@ -20,7 +20,7 @@ const Home = () => {
       <ReadMore/>
       <FeaturedCategories />
       <BrandsSection />
-      {/* <Brands /> */}
+      <Brands />
       <BannerImage />
       <BestSelling />
       <Banner />
