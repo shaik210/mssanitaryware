@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaPaperPlane } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 import contactImg from "./Assests/contact1.jpg";
 
