@@ -10,6 +10,7 @@ const Header = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [openDropdown, setOpenDropdown] = useState<number | null>(null); // For mobile dropdown
 
   const menu = [
     { id: 1, name: "Home", route: "/home" },
@@ -65,41 +66,58 @@ const Header = () => {
 
         {/* 🔹 Navigation Menu */}
         <ul className={`menu ${menuOpen ? "open" : ""}`}>
-          {menu.map((item) => (
-            <li key={item.id} className="menu-item">
-              <div className="menu-link-wrapper">
-                <Link
-                  href={item.route}
-                  style={{
-                    textDecoration: "none",
-                    color: pathname === item.route ? "#fff" : "#cbd0d4",
-                    fontSize: "1.1rem",
-                    fontWeight: "600",
-                    fontStyle: "Outfit",
+          {menu.map((item) => {
+            const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+            const hasDropdown = !!item.subMenu;
+            return (
+              <li
+                key={item.id}
+                className={`menu-item${isMobile && menuOpen && openDropdown === item.id ? " open" : ""}`}
+              >
+                <div
+                  className="menu-link-wrapper"
+                  onClick={() => {
+                    if (isMobile && hasDropdown) {
+                      setOpenDropdown(openDropdown === item.id ? null : item.id);
+                    } else {
+                      setMenuOpen(false);
+                    }
                   }}
-                  onClick={() => setMenuOpen(false)}
                 >
-                  {item.name}
-                </Link>
-                {item.subMenu && <span className="arrow">▼</span>}
-              </div>
+                  <Link
+                    href={item.route}
+                    style={{
+                      textDecoration: "none",
+                      color: pathname === item.route ? "#fff" : "#cbd0d4",
+                      fontSize: "1.1rem",
+                      fontWeight: "600",
+                      fontStyle: "Outfit",
+                    }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                  {hasDropdown && <span className="arrow">▼</span>}
+                </div>
 
-              {item.subMenu && (
-                <ul className="dropdown">
-                  {item.subMenu.map((subItem, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={subItem.route}
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
+                {hasDropdown && (
+                  <ul className="dropdown" style={{ display: isMobile && menuOpen && openDropdown === item.id ? "block" : undefined }}>
+                    {item.subMenu.map((subItem, idx) => (
+                      <li key={idx}>
+                        <Link
+                          href={subItem.route}
+                          onClick={() => setMenuOpen(false)}
+                          style={{ color: "#fff" }}
+                        >
+                          {subItem.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
@@ -114,10 +132,10 @@ const Header = () => {
           position: fixed;
           top: 0;
           left: 0;
-          width: 100%; 
+          width: 100vw;
           z-index: 1000;
-          padding: 0 20px;
-
+          padding: 0;
+          box-sizing: border-box;
         }
 
         .navbar {
@@ -126,7 +144,9 @@ const Header = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 100%;
+          width: 100vw;
+          box-sizing: border-box;
+          padding: 0 20px;
         }
 
         .logo {
@@ -194,9 +214,9 @@ const Header = () => {
         }
 
         .dropdown li a {
-          color: #ffffff;
+          color: #ffffff !important;
           font-size: 1rem;
-          fonrt-weight: 500;
+          font-weight: 500;
           font-family: "Outfit", sans-serif;
           text-decoration: none;
           background-color: #000000;
@@ -205,7 +225,7 @@ const Header = () => {
         }
 
         .dropdown li a:hover {
-          color: white;
+          color: #fff !important;
           font-weight: 600;
         }
 
@@ -263,6 +283,15 @@ const Header = () => {
         }
 
         @media (max-width: 768px) {
+          .header {
+            width: 100vw;
+            left: 0;
+            padding: 0;
+          }
+          .navbar {
+            width: 100vw;
+            padding: 0 10px;
+          }
           .hamburger {
             display: block;
           }
@@ -273,7 +302,7 @@ const Header = () => {
             position: absolute;
             top: 60px;
             left: 0;
-            width: 100%;
+            width: 100vw;
             background-color: #33393d;
             text-align: left;
             padding: 10px 0;

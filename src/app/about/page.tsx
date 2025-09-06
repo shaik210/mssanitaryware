@@ -5,7 +5,8 @@ import styles from './AboutSection.module.css';
 
 const AboutSection = () => {
   return (
-    <div className={styles.container}>
+    <div style={{backgroundColor:"#121212"}} className={styles.container}>
+      
       {/* Full-width Image */}
       <div className={styles.imageContainer}>
         <Image
@@ -41,7 +42,7 @@ const AboutSection = () => {
 
         {/* Our Product Range */}
         <div className={styles.productRange}>
-          <h2 className={styles.subTitle}>Our Product Range</h2>
+          <h2 style={{color:"#ccc"}} className={styles.subTitle}>Our Product Range</h2>
           <p className="mb-4">We source and supply a variety of sanitaryware products, including:</p>
 
           <div className={styles.productList}>

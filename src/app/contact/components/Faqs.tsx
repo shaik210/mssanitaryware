@@ -42,7 +42,7 @@ const Faqs = () => {
     },
   ];
   return (
-    <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
+    <div style={{ color:"#fff",maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
       <h2
         style={{
           fontSize: "30px",

@@ -5,7 +5,7 @@ import EmbededMap from './components/EmbededMap'
 
 const Contact = () => {
   return (
-    <div>
+    <div style={{backgroundColor:"#121212"}}>
       <ContactForm/>
       <EmbededMap/>
       <Faqs/>
