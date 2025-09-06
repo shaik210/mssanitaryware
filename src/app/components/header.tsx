@@ -146,7 +146,7 @@ const Header = () => {
           align-items: center;
           width: 100vw;
           box-sizing: border-box;
-          padding: 0 20px;
+          // padding: 0 20px;
         }
 
         .logo {

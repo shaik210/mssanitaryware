@@ -23,9 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <RouteLoader>
           {/* <TopBar /> */}
           <Header />
-          <NotificationBadge />
+          {/* <NotificationBadge /> */}
           {children}
-          <QuoteModal />
+          {/* <QuoteModal /> */}
           <Footer />
           <WhatsAppChat />
         </RouteLoader>
