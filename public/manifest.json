@@ -1,0 +1,49 @@
+{
+  "name": "TutorSathi - Your Learning Companion",
+  "short_name": "TutorSathi",
+  "description": "Connect with expert tutors for personalized learning experiences. Math, Physics, Telugu and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4338CA",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Find Tutors",
+      "short_name": "Tutors",
+      "description": "Search for available tutors",
+      "url": "/student",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "My Workspace",
+      "short_name": "Workspace",
+      "description": "Access your tutor workspace",
+      "url": "/tutor",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Live Class",
+      "short_name": "Class",
+      "description": "Join a live classroom",
+      "url": "/classroom",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
